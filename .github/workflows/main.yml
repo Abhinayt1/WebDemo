@@ -15,9 +15,18 @@ jobs:
            
            echo "Display All SQL Files to be modified"
            #ls -la ./ChangeScript
-           for f in ./ChangeScript/*.sql;
+           a=1
+           for f in ./ChangeScript/*0$a.sql;
             do
+             # if a is equal to 5 break the loop
+           if [ $a == 2 ]
+           then
+               break
+           fi
+            # Print the value
+            echo "Iteration no $a"
             echo Processing $f 
-            #echo Execute sqlcmd $(cat $f) ;
+            echo Execute sqlcmd $(cat $f) ;
+            ((a=a+1))
             done; 
            
